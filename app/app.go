@@ -9,6 +9,7 @@ import (
 	dbm "github.com/cosmos/cosmos-db"
 
 	"cosmossdk.io/core/appconfig"
+	"cosmossdk.io/core/store"
 	"cosmossdk.io/depinject"
 	"cosmossdk.io/log"
 	storetypes "cosmossdk.io/store/types"
@@ -30,6 +31,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
+	checkerskeeper "github.com/julienrbrt/chain-minimal/x/checkers/keeper"
 
 	_ "cosmossdk.io/api/cosmos/tx/config/v1"          // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/auth"           // import for side-effects
@@ -68,6 +70,7 @@ type MiniApp struct {
 	StakingKeeper         *stakingkeeper.Keeper
 	DistrKeeper           distrkeeper.Keeper
 	ConsensusParamsKeeper consensuskeeper.Keeper
+	CheckersKeeper        checkerskeeper.Keeper
 
 	// simulation manager
 	sm *module.SimulationManager
@@ -90,6 +93,11 @@ func AppConfig() depinject.Config {
 			// supply custom module basics
 			map[string]module.AppModuleBasic{
 				genutiltypes.ModuleName: genutil.NewAppModuleBasic(genutiltypes.DefaultMessageValidator),
+			},
+		),
+		depinject.Provide(
+			func(cdc codec.BinaryCodec, storeService store.KVStoreService) checkerskeeper.Keeper {
+				return *checkerskeeper.NewKeeper(cdc, storeService)
 			},
 		),
 	)
@@ -127,6 +135,7 @@ func NewMiniApp(
 		&app.StakingKeeper,
 		&app.DistrKeeper,
 		&app.ConsensusParamsKeeper,
+		&app.CheckersKeeper,
 	); err != nil {
 		return nil, err
 	}
