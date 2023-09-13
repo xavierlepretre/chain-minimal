@@ -21,7 +21,7 @@ buf generate --template buf.gen.pulsar.yaml
 
 cd ..
 
-cp -r github.com/julienrbrt/chain-minimal/* ./
+cp -r julienrbrt/chain-minimal/* ./
 rm -rf api && mkdir api
 mv julienrbrt/chain-minimal/* ./api
 rm -rf github.com julienrbrt
