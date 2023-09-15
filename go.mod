@@ -13,25 +13,26 @@ replace (
 )
 
 require (
-	cosmossdk.io/api v0.7.0
+	cosmossdk.io/api v0.7.1-0.20230820170544-1bd37053e0c0
 	cosmossdk.io/client/v2 v2.0.0-20230802091109-5b1bdf11e8c6
-	cosmossdk.io/core v0.10.0
+	cosmossdk.io/core v0.11.0
 	cosmossdk.io/depinject v1.0.0-alpha.4
 	cosmossdk.io/errors v1.0.0
 	cosmossdk.io/log v1.2.1
 	cosmossdk.io/math v1.1.2
 	cosmossdk.io/store v1.0.0-rc.0
 	cosmossdk.io/tools/confix v0.0.0-20230802091109-5b1bdf11e8c6
-	github.com/cometbft/cometbft v0.38.0-rc3
+	github.com/cometbft/cometbft v0.38.0
 	github.com/cosmos/cosmos-db v1.0.0
-	github.com/cosmos/cosmos-sdk v0.50.0-rc.0
+	github.com/cosmos/cosmos-sdk v0.50.0-rc.0.0.20230913215410-e5781a9d028d
+	github.com/cosmosregistry/example v0.0.0-20230913221426-b8d93e80e68b
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/viper v1.16.0
 )
 
 require (
 	cosmossdk.io/collections v0.4.0 // indirect
-	cosmossdk.io/x/tx v0.9.1 // indirect
+	cosmossdk.io/x/tx v0.10.0 // indirect
 	filippo.io/edwards25519 v1.0.0 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.1 // indirect
@@ -43,7 +44,7 @@ require (
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/cockroachdb/apd/v2 v2.0.2 // indirect
-	github.com/cockroachdb/errors v1.10.0 // indirect
+	github.com/cockroachdb/errors v1.11.1 // indirect
 	github.com/cockroachdb/logtags v0.0.0-20230118201751-21c54148d20b // indirect
 	github.com/cockroachdb/pebble v0.0.0-20230817233644-564b068800e0 // indirect
 	github.com/cockroachdb/redact v1.1.5 // indirect
@@ -146,17 +147,17 @@ require (
 	github.com/zondax/hid v0.9.1 // indirect
 	github.com/zondax/ledger-go v0.14.1 // indirect
 	go.etcd.io/bbolt v1.3.7 // indirect
-	golang.org/x/crypto v0.12.0 // indirect
+	golang.org/x/crypto v0.13.0 // indirect
 	golang.org/x/exp v0.0.0-20230817173708-d852ddb80c63 // indirect
-	golang.org/x/net v0.14.0 // indirect
+	golang.org/x/net v0.15.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.11.0 // indirect
-	golang.org/x/term v0.11.0 // indirect
-	golang.org/x/text v0.12.0 // indirect
+	golang.org/x/sys v0.12.0 // indirect
+	golang.org/x/term v0.12.0 // indirect
+	golang.org/x/text v0.13.0 // indirect
 	google.golang.org/genproto v0.0.0-20230803162519-f966b187b2e5 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20230726155614-23370e0ffb3e // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230815205213-6bfd019c3878 // indirect
-	google.golang.org/grpc v1.57.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230822172742-b8732ec3820d // indirect
+	google.golang.org/grpc v1.58.0 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
