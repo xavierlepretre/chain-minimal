@@ -47,4 +47,4 @@ modules:
       "@type": cosmos.tx.config.v1.Config
   - name: example
     config:
-      "@type": cosmosregistry.example.module.v1.Module
+      "@type": alice.checkers.module.v1.Module
