@@ -42,7 +42,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 
-	"github.com/julienrbrt/chain-minimal/app"
+	"github.com/cosmosregistry/chain-minimal/app"
 )
 
 // NewRootCmd creates a new root command for minid. It is called once in the
@@ -92,15 +92,19 @@ func NewRootCmd() *cobra.Command {
 				return err
 			}
 
-			// This needs to go after ReadFromClientConfig, as that function ets the RPC client needed for SIGN_MODE_TEXTUAL.
-			txConfigOpts.EnabledSignModes = append(txConfigOpts.EnabledSignModes, signing.SignMode_SIGN_MODE_TEXTUAL)
-			txConfigOpts.TextualCoinMetadataQueryFn = txmodule.NewGRPCCoinMetadataQueryFn(clientCtx)
-			txConfigWithTextual, err := tx.NewTxConfigWithOptions(codec.NewProtoCodec(clientCtx.InterfaceRegistry), txConfigOpts)
-			if err != nil {
-				return err
+			// sign mode textual is only available in online mode
+			if !clientCtx.Offline {
+				// This needs to go after ReadFromClientConfig, as that function ets the RPC client needed for SIGN_MODE_TEXTUAL.
+				txConfigOpts.EnabledSignModes = append(txConfigOpts.EnabledSignModes, signing.SignMode_SIGN_MODE_TEXTUAL)
+				txConfigOpts.TextualCoinMetadataQueryFn = txmodule.NewGRPCCoinMetadataQueryFn(clientCtx)
+				txConfigWithTextual, err := tx.NewTxConfigWithOptions(codec.NewProtoCodec(clientCtx.InterfaceRegistry), txConfigOpts)
+				if err != nil {
+					return err
+				}
+
+				clientCtx = clientCtx.WithTxConfig(txConfigWithTextual)
 			}
 
-			clientCtx = clientCtx.WithTxConfig(txConfigWithTextual)
 			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
 				return err
 			}
